@@ -1,0 +1,29 @@
+
+/* specific style for the whole page*/
+body{
+    background-color: azure;
+}
+
+*{
+    color: pink;
+}
+
+h1{
+    color: blueviolet;
+}
+
+p {
+    color: black;
+}
+
+li {
+    color: cadetblue;
+}
+
+#last-para {
+    color: rgb(69, 163, 132);
+  }
+
+[data-email="email"]{
+    color: red;
+}
