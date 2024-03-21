@@ -4,16 +4,27 @@ body{
     background-color: azure;
     border: 3px solid cornflowerblue;
     margin: 10px 10px 10px 10px;
+    min-height: 100vh;
 }
 
 *{
     color: pink;
+    font-family: vt323;
+    
 }
 
 h1{
     color: blueviolet;
+    /* a font size is 16px=1rem, this would scale the font automatically */
+    font-size: 2rem;
+    font: weight 4p00;
+    text-transform: uppercase;
+    padding: 30px;
+    font-family: pixelify sans;
+    text-align: center;
 }
 
+  
 p {
     color: black;
 }
@@ -29,3 +40,14 @@ li {
 [data-email="email"]{
     color: red;
 }
+
+a:hover{
+    color: crimson;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
