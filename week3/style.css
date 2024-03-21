@@ -2,6 +2,8 @@
 /* specific style for the whole page*/
 body{
     background-color: azure;
+    border: 3px solid cornflowerblue;
+    margin: 10px 10px 10px 10px;
 }
 
 *{
