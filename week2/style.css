@@ -41,5 +41,10 @@ body{
     align-items: center;
 }
 
+.footer{
+    display: flex;
+    background-color: rgb(98, 154, 186);
+}
+
 
   
