@@ -35,8 +35,11 @@ body{
     display: inline-block;
     width: 500px;
     flex: 0 0 auto;
-    padding-left: 100px;
-
-    ;
+    padding: 100px;
+    border: 2px solid ;
+    
+    align-items: center;
 }
+
+
   
