@@ -1,4 +1,6 @@
-
+button {
+    background-color: rgb(255, 145, 0);
+}
 
 h1 {
     font-size: 2rem;
@@ -10,14 +12,18 @@ h1 {
 }
 
 body{ 
-    background-position: cover
+    background-position: cover ;
+    background-color: rgb(8, 7, 6);
 }
 
 *{
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-family: vt323;
     font-size: 1.2rem;
-    
+}
+
+header{
+    position: sticky;
 }
 
 
@@ -26,14 +32,13 @@ body{
     display:grid;
     position:relative;
     overscroll-behavior-inline: contain;
-
     overflow-y:scroll;
     overflow-x:hidden;
     transform: rotate(270deg) translateX(-100%);
     transform-origin: top left;
     position:absolute;
     width:100vh;
-    height:100vw;
+    height:90vw;
     &::-webkit-scrollbar {
         display: none;
     }}
@@ -42,26 +47,28 @@ body{
 .scrolling > div {
     position: relative;
     width: 1024px;
-    height: 95vw;
+    height: 737px ;
     gap: 50px;
     flex: 0 0 auto;
     padding: 100px 450px 100px 450px;
     border: 2px solid black ;
-    margin-bottom: 80%;
+    margin-bottom: 51%;
     transform: rotate(90deg) translateY(-100vh);
     transform-origin: top left;
 
     }
 
+
 .side1{ 
     background-image: url(../week2/img/bg.png);   
-    background-position: center;
+    background-size: contain;
+    display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto ;
 }
 .side2{ 
     background-image: url(../week2/img/bg.png);
-    background-position: center;
+    background-size: contain;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
@@ -69,14 +76,14 @@ body{
 }
 .side3{ 
     background-image: url(../week2/img/bg.png);
-    background-position: center;
+    background-size: contain;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
 }
 .side4{ 
     background-image: url(../week2/img/bg.png);
-    background-position: center;
+    background-size: contain;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
