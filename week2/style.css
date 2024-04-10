@@ -3,21 +3,19 @@ button {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font: weight 4p;
     text-transform: uppercase;
-  
+    color: aliceblue;
     font-family: pixelify sans;
     text-align: center;
 }
 
 body{ 
-    background-position: cover ;
-    background-color: rgb(8, 7, 6);
+    background-color: rgb(7, 4, 1);
 }
 
 *{
-    color: rgb(255, 255, 255);
     font-family: vt323;
     font-size: 1.2rem;
 }
@@ -30,15 +28,15 @@ header{
 
 .scrolling {
     display:grid;
-    position:relative;
-    overscroll-behavior-inline: contain;
+    position:absolute;
+    align-items: center;
     overflow-y:scroll;
     overflow-x:hidden;
-    transform: rotate(270deg) translateX(-100%);
+    transform: rotate(-90deg) translateX(-100%);
     transform-origin: top left;
-    position:absolute;
     width:100vh;
-    height:90vw;
+    height:100vw;
+    
     &::-webkit-scrollbar {
         display: none;
     }}
@@ -46,29 +44,28 @@ header{
      
 .scrolling > div {
     position: relative;
-    width: 1024px;
+    width: 1420px;
     height: 737px ;
     gap: 50px;
     flex: 0 0 auto;
-    padding: 100px 450px 100px 450px;
+    padding: 100px 250px 100px 250px;
     border: 2px solid black ;
     margin-bottom: 51%;
     transform: rotate(90deg) translateY(-100vh);
     transform-origin: top left;
-
     }
 
 
 .side1{ 
     background-image: url(../week2/img/bg.png);   
-    background-size: contain;
+    background-size: cover;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: auto ;
+    object-fit: cover;
 }
 .side2{ 
     background-image: url(../week2/img/bg.png);
-    background-size: contain;
+    background-size: cover;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
@@ -76,19 +73,27 @@ header{
 }
 .side3{ 
     background-image: url(../week2/img/bg.png);
-    background-size: contain;
+    background-size: cover;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
 }
 .side4{ 
     background-image: url(../week2/img/bg.png);
-    background-size: contain;
+    background-size: cover;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: auto;
 }
 
+.q1{
+    padding-top: 50%;
+}
+
+#door{
+    padding-top: 169%;
+    width: 150%;
+}
 .footer{
     display: flex;
 }
