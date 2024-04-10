@@ -3,7 +3,7 @@
 .center {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15%;
+  margin-top: 20%;
 
 }
 
@@ -14,11 +14,9 @@
 .third {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10%;
 }
-.forth {
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .title {
   text-align: center;
@@ -36,6 +34,6 @@
 .window {
   display: table-cell;
   vertical-align: m;
-  padding: 20px;
+  padding: 40px;
 }
 
