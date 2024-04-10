@@ -3,42 +3,14 @@
 body{
     background-color: azure;
     border: 3px solid cadetblue;
-    margin: 20px 10px 10px 10px;
+    margin: 100px 100px 100px 100px;
     min-height: 100vh;
 }
 
 *{
     color: rgb(0, 0, 0);
     font-family: vt323;
-    
-}
-
-h1{
-    color: blueviolet;
-    /* a font size is 16px=1rem, this would scale the font automatically */
-    font-size: 2rem;
-    font: weight 4p;
-    text-transform: uppercase;
-    padding: 30px;
-    font-family: pixelify sans;
-    text-align: center;
-}
-
-  
-p {
-    color: black;
-}
-
-li {
-    color: cadetblue;
-}
-
-#last-para {
-    color: rgb(69, 163, 132);
-  }
-
-[data-email="email"]{
-    color: red;
+    font-size: 1.2rem;
 }
 
 header{
@@ -50,16 +22,16 @@ header{
 }
 
 h3 {
-    align-items: left;
+    padding-left: 20px;
+    
 }
 
 a:hover{
-    color: crimson;
+    background-color: rgb(49, 83, 151);
+    border: 3px solid rgb(49, 83, 151);
+    color: rgb(255, 255, 255);
 }
-
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.content {
+    padding: 10px 20px 80px 20px;
 }
 
