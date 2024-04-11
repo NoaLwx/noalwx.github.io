@@ -1,23 +1,5 @@
 
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20%;
-
-}
-
-.second {
-  margin-left: auto;
-  margin-right: auto;
-}
-.third {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10%;
-}
-
-
 .title {
   text-align: center;
   font-family: vt323;
@@ -27,13 +9,15 @@
 }
 
 .row {
-  position: center;
-
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+  margin-bottom: 10%;
 }
 .window {
   display: table-cell;
-  vertical-align: m;
   padding: 40px;
 }
 
