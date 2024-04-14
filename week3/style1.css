@@ -1,0 +1,24 @@
+
+
+
+.laptop{
+    position: fixed;
+    height: 100vh ;
+    margin-left: 11.58%;
+    
+}
+
+body{
+    background-color: #dda546;
+    overflow: hidden;
+}
+
+.screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scale: 0.58;
+    transform:translateY(-26%) translateX(-0.6%) ;
+
+    background-color: black;
+}

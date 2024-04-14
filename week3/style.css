@@ -3,7 +3,6 @@
 
 *{
     color: rgb(226, 233, 232);
-
     font-family: vt323;
     font-size: 1.5rem;
 }
@@ -14,6 +13,7 @@
     flex-wrap: wrap;
     background-image: url(/week3/img/bluesky.jpeg);
     background-size:cover;
+    
 }
 
 .content {
@@ -90,6 +90,7 @@ a:hover{
     grid-row: 4/5;
     max-width: 670px;
     border: 5px solid rgb(23, 103, 144);
+    margin-left: 20%;
 }
 #q11{
     grid-column: 1/3 ;
