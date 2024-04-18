@@ -2,10 +2,10 @@
 
 
 .laptop{
-    position: fixed;
-    height: 100vh ;
-    margin-left: 11.58%;
+    position: absolute;
     
+    height: 100% ; 
+    margin-left: 11.58%;
 }
 
 body{
@@ -15,8 +15,6 @@ body{
 
 .screen {
     display: flex;
-    justify-content: center;
-    align-items: center;
     scale: 0.58;
     transform:translateY(-26%) translateX(-0.6%) ;
     overflow: hidden;

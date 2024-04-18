@@ -16,12 +16,12 @@
   justify-content: center;
   align-items: center;
   margin: 15% 20% 10% 20%;
-  gap: 20px;
+  gap: 30px;
 
 }
 .window {
-  padding: 50px;
-  width: 90%;
+  width: 100%;
+  padding-bottom: 5%;
   justify-content: center;
   align-items: center;
 }
