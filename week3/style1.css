@@ -3,7 +3,6 @@
 
 .laptop{
     position: absolute;
-    
     height: 100% ; 
     margin-left: 11.58%;
 }
@@ -22,6 +21,7 @@ body{
     ::-webkit-scrollbar{
         display:none;
     }
+    
 }
 
 #back {
