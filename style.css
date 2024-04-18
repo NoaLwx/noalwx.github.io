@@ -8,6 +8,8 @@
   font-size: 5rem;
 }
 
+
+
 .row {
   display: grid;
   grid-template-columns: repeat(2, 1fr) ;
@@ -18,8 +20,9 @@
 
 }
 .window {
-  display: table-cell;
   padding: 50px;
   width: 90%;
+  justify-content: center;
+  align-items: center;
 }
 
