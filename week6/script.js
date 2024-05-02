@@ -13,32 +13,46 @@
 // }
 
 
+const myImg = document.querySelector("#face");
 
+myImg.addEventListener("mouseover",makeItRound);
+myImg.addEventListener("mouseout", makeItSquare);
 
-let myButton = document.querySelector("#my-button");
-    console.log(myButton);
-
-myButton.addEventListener("click", toggleMe);
-
-function toggleMe(){
-    let myImg = document.querySelector("#face");
-    console.log(myImg);
+function makeItRound(){
     myImg.classList.toggle("round");
 }
+function makeItSquare(){
+    myImg.classList.remove("round");
+}
 
+
+// let myButton = document.querySelector("#my-button");
+//     console.log(myButton);
+
+// myButton.addEventListener("click", toggleMe);
+
+// function toggleMe(){
+//     let myImg = document.querySelector("#face");
+//     console.log(myImg);
+//     myImg.classList.toggle("round");
+// }
+
+// const myProject = document.querySelectorAll("p");
+// console.log(myProject);
+// myProject.forEach(checkTopic);
+// function checkTopic(item){
+//     if (item.dataset.topic === "image"){
+//         item.classList.add("purple-box");
+//     }
+//     if (item.dataset.topic === "sound"){
+//         item.classList.add("coral-box");
+//     }
+// }
 
 // let myButton = document.querySelector("#my-button");
 // myButton.addEventListener("click", toggleMe);
 // let myImg = document.querySelector("#myImage");
 // let helloMsg = document.querySelector("#hello");
-// myImg.addEventListener("mouseover", addMe);
-// myImg.addEventListener("mouseout", removeMe);
-// function addMe() {
-//   myImg.classList.add("round");
-// }
-// function removeMe() {
-//   myImg.classList.remove("round");
-// }
 // function toggleMe() {
 //   let myName = myImg.dataset.catname;
 //   helloMsg.textContent = "Hi I am " + myName;
