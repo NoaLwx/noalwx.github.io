@@ -15,41 +15,53 @@
 // let temperature = 16;
 // let temperature = prompt("what's the temperature outside?");
 
-let tempInput = document.querySelector("#temperature");
-let temperature = tempInput.value;
-console.log(temperature);
 
+
+// put them inside the function first
 function checkWeather() {
-if (temperature>=20 && temperature<30){
-    console.log ("it feels sunny and warm")
-}
-else if (temperature>=10 && temperature<20){
-    console.log("it feels cold")
-}
-else if (temperature>30){
-    console.log("it feels hot")
-}
-}
+    let body = document.querySelector("body");
+    let outer = document.querySelector(".outer");
+    console.log("I am just being clicked");
+    let myInput = document.querySelector("#temperature");
+    let temp = myInput.value;
+    console.log("current temp is", temp);
+    if (temp >= 20 && temp < 30) {
+      body.style.backgroundImage = "url('/week5/img/warm.jpeg')";
+      outer.style.backgroundColor = "purple";
+      console.log("it feels sunny and warm");
+    } else if (temp >= 10 && temp < 20) {
+      body.style.backgroundImage = "url('/week5/img/cloud.jpeg')";
+      outer.style.backgroundColor = "lime";
+      console.log("it feels cold");
+    } else if (temp >= 30) {
+      outer.style.backgroundColor = "grey";
+      body.style.backgroundImage = "url('/week5/img/ashbaby.png')";
+      console.log("it is boiling hot");
+    } else if (temp < 10) {
+      outer.style.backgroundColor = "blue";
+      body.style.backgroundImage = "url('/week5/img/ice.jpeg')";
+      console.log("it is freezing");
+    }
+  }
+// let shoppingCart = [
+//     {name: "T-shirt", price:20},
+//     {name: "Jeans", price:50},
+//     {name:"Sneakers",price:80},
+//     {name: "Backpack",price: 30}
+// ];
 
-let shoppingCart = [
-    {name: "T-shirt", price:20},
-    {name: "Jeans", price:50},
-    {name:"Sneakers",price:80},
-    {name: "Backpack",price: 30}
-];
+// let total = 0;
+// for (let i = 0; i<4; i++) {
+//     total = total + shoppingCart [i].price;
+//     console.log ("the sum so far", total);
+// }
 
-let total = 0;
-for (let i = 0; i<4; i++) {
-    total = total + shoppingCart [i].price;
-    console.log ("the sum so far", total);
-}
+// console.log("total rpice", total);
 
-console.log("total rpice", total);
+// let discount = 0.1;
+// let discountPrice = 0;
+// if (total > 100){
+//     discountPrice = total - total*discount;
+// }
 
-let discount = 0.1;
-let discountPrice = 0;
-if (total > 100){
-    discountPrice = total - total*discount;
-}
-
-console.log("the discount price", discountPrice)
+// console.log("the discount price", discountPrice)
