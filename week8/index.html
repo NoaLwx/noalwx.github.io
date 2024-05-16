@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video player example</title>
+    <link rel="stylesheet" href="/week8/style.css">
+    <link rel="stylesheet" href="../reset.css">
+   <script src="/week8/script.js" defer></script>
+</head>
+<body>
+    <div class="outer">
+        <section class="video-container">
+        <!-- controls give the pause and volumn options -->
+        <video id="my-video" src="/week7/videos/stardust.mp4" controls></video>
+        </section>
+        <section class="video-controls">
+            <button id="play-pause-btn">
+                <img id="play-pause-img"
+                src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+                alt="Play Button"
+                width="30"
+                height="30">
+            </button>
+
+            <button id="mute-unmute-btn">
+                <img id="mute-unmute-img"
+                src="https://img.icons8.com/ios-glyphs/30/high-volume--v2.png"
+                alt="Mute Button"
+                width="30"
+                height="30">
+            </button>
+
+            <!-- this have to be div!! -->
+            <div class="progress-bar">
+                <span id="progress-bar-fill">
+
+                </span>
+            </div>
+
+
+        </section>
+    </div>
+   
+</body>
+</html>
