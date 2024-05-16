@@ -48,6 +48,68 @@ const progressBarFill = document.querySelector ("#progress-bar-fill")
 
 function updateProgressBar(){
     const progress = (myVideo.currentTime / myVideo.duration) * 100;
-    console.log (progress);
+    // console.log (progress);
     progressBarFill.style.width = progress + "%";
 }
+//---------------------------------------------------------------
+//the following code will make the video go fullscreen
+
+const fullscreenButton = document.querySelector("#fullscreen-button");
+fullscreenButton.addEventListener("click", goFullScreen);
+
+function goFullScreen(){
+    if (!document.fullscreenElement){
+        myVideo.requestFullscreen();
+    }
+    else{
+        document.exitFullscreen;
+    }
+}
+
+//------------------------------------------------------------------
+// introducing timestamp
+
+const step1Button = document.querySelector("#step-1-btn");
+step1Button.addEventListener("click", gotoStep1);
+
+function gotoStep1(){
+    myVideo.currentTime = 16.0;
+}
+
+const step2Button = document.querySelector("#step-2-btn");
+step2Button.addEventListener("click", gotoStep2);
+
+function gotoStep2(){
+    myVideo.currentTime = 30.0;
+}
+
+//----------------------------------------------------------------------
+//volume up n down
+
+const volumeDownButton = document.querySelector("#decrease-volume-btn");
+volumeDownButton.addEventListener("click", decreaseVolume);
+
+function decreaseVolume(){
+    if (myVideo.volume > 0.11){    
+        myVideo.volume -= 0.1;
+    }
+}
+
+
+const volumeUpButton = document.querySelector("#increase-volume-btn");
+volumeUpButton.addEventListener("click", increaseVolume);
+
+function increaseVolume(){
+    if (myVideo.volume < 0.9){    
+        myVideo.volume += 0.1;
+    }
+}
+
+myVideo.addEventListener("volumechange", updateVolume);
+function updateVolume(){
+    console.log( "current volume is",myVideo.volume);
+}
+
+//---------------------------------------------------------------------------
+
+//creating an array list for the videos
