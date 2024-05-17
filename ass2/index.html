@@ -7,6 +7,9 @@
     <!-- add the font family of your choice -->
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="/ass2/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="/ass2/script.js" defer></script>
   </head>
   <body>
@@ -15,54 +18,57 @@
       <h1>Chilling with Pokemons</h1>
     </header>
 
-    <!-- Navigation Section -->
-    
+    <section class="video-title">
+      <!-- in this section, we display the name of the video-->
+      <h1>Now Playing: <span id="video-name"></span></h1>
+    </section>    
 
     <!-- Main Content Section -->
     <main class="container">
+
       <!-- Media Player Section -->
       <div class="media-player">
 
-      <nav class="video-list">
-      <ul>
-        <button id="first-btn">fire</button>
-        <button id="second-btn">water</button>
-        <button id="third-btn">grass</button>
-        <button id="fourth-btn">fairy</button>
-        <button id="fifth-btn">lightning</button>
-        <!-- Add or remove navigation items as needed -->
-      </ul>
-    </nav>
-
-        <video id="custom-video-player" controls>
-          <source
-            src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div class="custom-controls">
-          <button id="play-pause-btn" onclick="togglePlayPause()">
-            <img
-              id="play-pause-img"
-              src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
-              alt="Play Button"
-              width="24"
-              height="24"
-            />
+        <section class="video-list">
+          <!-- We use buttons, whenever user clicks on them, the correspoding 
+          video will be played  -->
+          <button id="first-video-btn">
+            <img id="first-video-img" src="zenscape.png" alt="Zenscape" />
           </button>
+          <button id="second-video-btn">
+            <img id="second-video-img" src="stardust.png" alt="Stardust" />
+          </button>
+        </section>
+
+    <video id="my-video" controls src="/week7/videos/stardust.mp4"  type="video/mp4" ></video>
+
+        <div class="custom-controls">
+
+          <button id="play-pause-btn">
+            <img id="play-pause-img"
+            src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+            alt="Play Button"
+            width="30"
+            height="30">
+        </button>
+
+        <button id="mute-unmute-btn">
+            <img id="mute-unmute-img"
+            src="https://img.icons8.com/ios-glyphs/30/high-volume--v2.png"
+            alt="Mute Button"
+            width="30"
+            height="30">
+        </button>
+
           <!-- add the missing buttons or functionality here -->
           <div class="progress-bar">
             <span id="progress-bar-fill"></span>
           </div>
+
+
         </div>
       </div>
 
-      <!-- Additional Content Section -->
-      <section>
-        <h2>Additional Content</h2>
-        <p>This is where you can showcase any other relevant content.</p>
-        <!-- Add more content as needed -->
-      </section>
     </main>
 
     <!-- Footer Section -->
