@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment 2</title>
@@ -11,80 +11,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="/ass2/script.js" defer></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Header Section -->
-    <!-- <header>
-      <h1>Chilling with Pokemons</h1>
-    </header> -->
+  <header>
+    <a href="/assignments/index.html">
+      <h1>Back to Assignment 2</h1>
+      </header>
+    </a>
+  </header>
 
-    <section class="video-title">
-      <!-- in this section, we display the name of the video-->
-      <h1>Now Playing: <span id="video-name"></span></h1>
-    </section>    
+  <section class="video-title">
+    <!-- in this section, we display the name of the video-->
+    <h1>Now Playing: <span id="video-name"></span></h1>
+  </section>    
 
-    <!-- Main Content Section -->
-    <main class="container">
+  <!-- Main Content Section -->
+  <main class="container">
 
-      <!-- Media Player Section -->
-      <div class="media-player">
+  <!-- Media Player Section -->
+  <div class="media-player">
 
        
-          <!-- We use buttons, whenever user clicks on them, the correspoding 
-          video will be played  -->
-          <button id="first-video-btn">
-            <img id="first-video-img" src="/ass2/img/bul.png" width="100" alt="Grass" />
-          </button>
-          <button id="second-video-btn">
-            <img id="second-video-img" src="/ass2/img/squi.png" width="110" alt="Water" />
-          </button>
-          <button id="third-video-btn">
-            <img id="third-video-img" src="/ass2/img/char.png" width="110" alt="Fire" />
-          </button>
+  <!-- buttons for changing the videos
+  Each button is corresponding to the videos with the same theme/pokemon -->
+  <button id="first-video-btn">
+    <img id="first-video-img" src="/ass2/img/bul.png" width="100" alt="Grass" />
+  </button>
+
+  <button id="second-video-btn">
+    <img id="second-video-img" src="/ass2/img/squi.png" width="110" alt="Water" />
+  </button>
+
+  <button id="third-video-btn">
+    <img id="third-video-img" src="/ass2/img/char.png" width="110" alt="Fire" />
+  </button>
       
+  <!-- the video display box -->
+  <video id="my-video" controls src="/ass2/video/Grass.mp4"  type="video/mp4" ></video>
 
-    <video id="my-video" controls src="/ass2/video/Grass.mp4"  type="video/mp4" ></video>
+  <!-- buttons for controlling the video -->
+  <div class="custom-controls">
 
-    <!-- <img id="top" height="32" src="/ass2/img/bar2.png"> -->
+    <!-- playing and pausing the video -->
+    <button id="play-pause-btn">
+      <img id="play-pause-img"
+      src="/ass2/img/play.png"
+      alt="Play Button"
+      width="60"
+      height="50">
+    </button>
 
-        <div class="custom-controls">
+    <!-- decreasing the volumn -->
+    <button id="decrease-volume-btn">
+      <img id="decrease-volume-img"
+      src="/ass2/img/downvol.png"
+      alt="Mute Button"
+      width="35">
+    </button>
+    
+    <!-- muting the volume without decreasing the volume.
+    If it's red, it's muted  -->
+    <button id="mute-unmute-btn">
+      <img id="mute-unmute-img"
+      src="/ass2/img/unmute.png"
+      alt="Mute Button"
+      width="60"
+      height="50">
+    </button>
 
-          <button id="play-pause-btn">
-            <img id="play-pause-img"
-            src="/ass2/img/play.png"
-            alt="Play Button"
-            width="50"
-            height="50">
-        </button>
+    <!-- increasing the volume -->
+    <button id="increase-volume-btn">
+      <img id="increase-volume-img"
+      src="/ass2/img/upvol.png"
+      alt="Mute Button"
+      width="35">
+    </button>
+  
+  <!-- progress bar for the video -->
+  <div class="progress-bar">
+    <span id="progress-bar-fill"></span>
+  </div>
 
-        <button id="mute-unmute-btn">
-            <img id="mute-unmute-img"
-            src="/ass2/img/unmute.png"
-            alt="Mute Button"
-            width="50"
-            height="50">
-        </button>
+  <!-- button for the video to loop when it ends
+  if it's green, then the loop is enable -->
+    <button id="loop-btn">
+      <img id="loop-img"
+      src="/ass2/img/loop.png"
+      alt="Loop Button"
+      width="60"
+      height="50">
+    </button>
+    </div>
+  </div>
 
-          <!-- add the missing buttons or functionality here -->
-          <div class="progress-bar">
-            <!-- <img id="top" height="32" src="/ass2/img/bar2.png"> -->
-            <span id="progress-bar-fill"></span>
-            
-          </div>
-
-
-        </div>
-      </div>
-
-    </main>
+  </main>
 
     <!-- Footer Section -->
     <footer>
-      &copy; 2024 Media Player Website. All rights reserved.<br>
-      <a href="https://icons8.com/icon/59862/play">Play</a> icon by
-      <a href="https://icons8.com">Icons8</a>
-      <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
-      <a href="https://icons8.com">Icons8</a>
+
+    &copy; 2024 Media Player Website. All rights reserved.<br>
+    <a href="https://slip.stream/tracks/bea86e94-f9e7-4cc0-8358-e410a90b1ab2">Beautiful Day</a> and
+    <a href="https://slip.stream/tracks/2f599bff-b7a6-4cd9-82e1-75ff26c6a15a">Dark Forest</a> by Purrple Cat <br>
+    <a href="https://slip.stream/tracks/687057fa-e284-4fae-84de-9b0e6a583cf9">Double Johnie Blue</a> on Slip.stream
+      
     </footer>
   </body>
 </html>
