@@ -17,8 +17,9 @@ h1{
     margin: 0;
     padding: 0;
   }
-  
+
 body {
+  /* changing the font to my preferred font */
   font-family: vt323;
   font-size: 1.2rem;
   background-color: var(--primary-bg-color);
@@ -38,6 +39,8 @@ body {
 }
 
 /* video button styling at the start */
+/* since the first video is the bulbasaur, 
+I set the button to match with the video */
 #first-video-btn{
   display: grid;
   justify-content: center;
@@ -47,6 +50,8 @@ body {
   grid-column: 1/2;
 }
 
+/* setting the other button as black to indicate
+that it's not working right now */
 #second-video-btn{
   display: grid;
   justify-content: center;
@@ -65,6 +70,7 @@ body {
   grid-column: 3/4;
 }
  
+
 /* Media player styling */
 .media-player {
   padding: 20px;
@@ -74,7 +80,8 @@ body {
   width: 100%;
   margin: 0 auto;
 }
-  
+
+/* using the grid to make the contents stay neatly in the box */
 .media-player video {
   align-items: center;
   width: 100%;
@@ -84,6 +91,8 @@ body {
   
 
 /* controls button for the video */
+/* i was going to put this vertically on the side of the video */
+/* but putting them on top is easier to look and to click */
 .custom-controls {
   display: flex;
   justify-content: space-between;
@@ -94,7 +103,9 @@ body {
   grid-column: 1/4;
   margin-bottom: 10px;
 }
-  
+
+/* setting the button background colour to black
+so that they match with the background */
 .custom-controls button {
   background-color: #000000;
   color: var(--main-text-color);
@@ -106,15 +117,16 @@ body {
   align-items: center;
 }
 
+/* styling the volume button so that they don't
+overlay on anything else */
 #decrease-volume-btn{
   padding-bottom: 15px;
   padding-left: 10px;
 }
-
 #increase-volume-btn{
   padding-bottom: 15px;
 }
-  
+
 .progress-bar {
   width: 100%;
   height: 50px;
@@ -124,6 +136,7 @@ body {
   margin-left: 5px;
 }
 
+/* using image as the progress bar to customise it with the theme*/
 .progress-bar span {
   display: block;
   height: 100%;
@@ -133,6 +146,8 @@ body {
   z-index: 3;
 }
   
+/* title for each video */
+/* also making the font bigger to read easier */
 .video-title{
   font-size: 2rem;
   margin-top: 3%;
