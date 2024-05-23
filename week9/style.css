@@ -44,8 +44,8 @@ button{
 
 button:hover{
     background-color: crimson;
-    translate: 10px;
-    scale: 2;
+    /* translate: 10px; */
+    /* scale: 2; */
 }
 
 input{
@@ -187,4 +187,15 @@ input:focus{
      100%{
         scale: 1;
      }    
+}
+
+#side-drawer{
+    position: fixed;
+    width: 200px;
+    background-color: cadetblue;
+    height: 100vh;
+    top: 0;
+    left: -200px;
+    text-align: center;
+    transition: translate 0.5s linear;
 }
