@@ -1,4 +1,10 @@
-#puzzle{
+#myCanvas{
     border: 2px solid red;
+}
+
+.puzzle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
