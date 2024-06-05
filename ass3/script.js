@@ -3,8 +3,8 @@ let pieces = [];
 
 function main(){
 const canvas = document.querySelector("#myCanvas");
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = 500;
+canvas.height = 500;
 
 const context = canvas.getContext(`2d`);
 const img = new Image()
