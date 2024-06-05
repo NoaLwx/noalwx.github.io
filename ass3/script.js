@@ -13,7 +13,7 @@ img.src = "/ass3/images/puzzle/puzzle1.PNG"
 img.onload = () => {
     initializePieces(size.rows, size.columns);
     updateCanvas(context,img);
-    randomizePieces();
+    // randomizePieces();
     }
 }
 
