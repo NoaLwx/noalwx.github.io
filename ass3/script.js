@@ -36,7 +36,7 @@ window.onload = function(){
         for (let c=0; c<columns; c++){
             let tile = document.createElement("img");
             tile.id = `tile-${r}-${c}`; // Assign unique ID to each tile
-            tile.src = "/ass3/images/puzzle/blank.png"
+            tile.src = "/ass3/images/puzzle/blanktile.png"
 
             tile.addEventListener("dragstart", dragStart); //click on image to drag
             tile.addEventListener("dragover", dragOver);   //drag an image
