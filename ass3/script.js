@@ -6,7 +6,7 @@ var currTile;
 var otherTile;
 
 // Mapping object to associate pieces with their corresponding tile indices
-var pieceToTileMap = {};
+// var pieceToTileMap = {};
 
 // Populate the mapping object before shuffling
 
@@ -27,6 +27,7 @@ window.onload = function(){
             img = new Image();
             img.src = "/ass3/images/puzzle/puzzle1.PNG";
             // Append the image element to the container
+
             document.getElementById("puzzlehint").appendChild(img);
         }
     }
@@ -35,7 +36,15 @@ window.onload = function(){
         for (let c=0; c<columns; c++){
             let tile = document.createElement("img");
             tile.id = `tile-${r}-${c}`; // Assign unique ID to each tile
-            tile.src = "/ass3/images/puzzle/puzzle1.PNG"
+            tile.src = "/ass3/images/puzzle/blank.PNG"
+
+            tile.addEventListener("dragstart", dragStart); //click on image to drag
+            tile.addEventListener("dragover", dragOver);   //drag an image
+            tile.addEventListener("dragenter", dragEnter); //dragging an image into another one
+            tile.addEventListener("dragleave", dragLeave); //dragging an image away from another one
+            tile.addEventListener("drop", dragDrop);       //drop an image onto another one
+            tile.addEventListener("dragend", dragEnd);      //after you completed dragDrop
+
             document.getElementById("puzzle").append(tile)
         }
     }
@@ -78,7 +87,7 @@ window.onload = function(){
 
 
 function dragStart(event){
-    currTile = event.target;
+    currTile = this;
 }
 
 function dragOver(event){
@@ -95,22 +104,24 @@ function dragLeave(event){
 
 function dragDrop(event){
     event.preventDefault();
-    const puzzleContainer = document.getElementById('puzzle');
-    const pieceDropped = event.target;
-    const correspondingPuzzleTileId = pieceDropped.id.replace('piece-', 'tile-'); // Find the corresponding puzzle tile ID based on the piece ID
+//     const puzzleContainer = document.getElementById('puzzle');
+//     const pieceDropped = event.target;
+//     const correspondingPuzzleTileId = pieceDropped.id.replace('piece-', 'tile-'); // Find the corresponding puzzle tile ID based on the piece ID
 
-    // Remove the corresponding puzzle tile
-    const correspondingPuzzleTile = document.getElementById(correspondingPuzzleTileId);
-    if (correspondingPuzzleTile) {
-        puzzleContainer.removeChild(correspondingPuzzleTile);
-    }
+//     // Remove the corresponding puzzle tile
+//     const correspondingPuzzleTile = document.getElementById(correspondingPuzzleTileId);
+//     if (correspondingPuzzleTile) {
+//         puzzleContainer.removeChild(correspondingPuzzleTile);
+//     }
 
-    // Add the dropped piece to the puzzle container
-    puzzleContainer.appendChild(pieceDropped);
+//     // Add the dropped piece to the puzzle container
+//     puzzleContainer.appendChild(pieceDropped);
+
+otherTile = this;
 }
 
-
-function dragEnd(event){
+function dragEnd(event) {
+  
     let currImg = currTile.src;
     let otherImg = otherTile.src;
     currTile.src = otherImg;
