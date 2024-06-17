@@ -1,10 +1,79 @@
-#myCanvas{
-    border: 2px solid red;
+body{
+    margin: 0;
+    /* overflow: hidden; */
+   
 }
 
-.puzzle{
+
+
+header{
+    width: 100vw;
+    font-size: 3rem;
+}
+
+/* --------------------------------------------------------- */
+/* gameplay elements */
+
+.element{
+    height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+#puzzle{
+    grid-row: 1/2;
+    grid-column: 2/3;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
+    width: 600px;
+    height: 600px;
+    border: 1px solid red;
+    z-index: 3;
+}
+
+#puzzlehint{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    width: 600px;
+    height: 600px;
+    background-color: rgb(109, 78, 138);
+}
+
+#puzzlehint img {
+    width: 600px;
+    height: 600px;
+    opacity: 0.5;
+}
+
+#puzzle img {
+    width: 200px;
+    height: 200px;
+}
+
+#pieces {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    background-color: aqua;
+}
+
+#avaleft{
+    grid-column: 1/2;
+    grid-row: 1/3;
+    background-color: aqua;
+    bottom: 0;
+}
+
+#avaright{
+    grid-row: 1/3;
+    grid-column: 3/4;
+    background-color: blueviolet;
+    bottom: 0;
+}
+
+#textbox{
+    grid-row: 2/3;
+    grid-column: 1/4;
+    border: 2px solid blue;
 }

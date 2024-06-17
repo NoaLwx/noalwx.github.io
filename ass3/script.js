@@ -1,77 +1,46 @@
-let size = {x:0, y:0, width:500, height:500, rows:3, columns:3};
-let pieces = [];
 
-function main(){
-const canvas = document.querySelector("#myCanvas");
-canvas.width = 500;
-canvas.height = 500;
 
-const context = canvas.getContext(`2d`);
-const img = new Image()
-img.src = "/ass3/images/puzzle/puzzle1.PNG"
 
-img.onload = () => {
-    initializePieces(size.rows, size.columns);
-    updateCanvas(context,img);
-    // randomizePieces();
-    }
-}
+var rows = 3;
+var columns = 3;
 
-function updateCanvas(context,img){
-    context.clearRect(0, 0, size.width, size.height); // Clear the canvas
-    context.drawImage(img, size.x, size.y, size.width, size.height);
+window.onload = function(){
+    const hint = document.getElementById("hint")
+    let img = null;
+    hint.addEventListener("click", getHint);
 
-    for(let i = 0; i<pieces.length; i++){
-        pieces[i].draw(context,img);
-    }
-}
-
-function initializePieces(rows, cols){
-    size.rows = rows;
-    size.columns = cols;
-    pieces = [];
-    for(let i=0; i<size.rows; i++){
-        for(let j=0; j<size.columns;j++){
-            pieces.push(new Piece (i,j));
+    function getHint (){
+        if (img) {
+            // If it exists, remove it from the container
+            document.getElementById("puzzlehint").removeChild(img);
+            img = null; // Reset the variable
+        } else {
+            // If it doesn't exist, create a new image element
+            img = new Image();
+            img.src = "/ass3/images/puzzle/puzzle1.PNG";
+            // Append the image element to the container
+            document.getElementById("puzzlehint").appendChild(img);
         }
     }
-}
-
-// function randomizePieces(){
-//     for(let i=0; i<pieces.length;i++){
-//         let loc = {
-//             x: Math.random()* canvas.width,
-//             y: Math.random()* canvas.height
-//         }
-//         pieces[i].x=loc.x;
-//         pieces[i].y=loc.y;
-//     }
-// }
-
-class Piece{
-    constructor(rowIndex, colIndex){
-        this.rowIndex = rowIndex;
-        this.colIndex = colIndex;
-        this.width = size.width/size.columns;
-        this.height = size.height/size.rows;
-        this.x = this.width * this.colIndex;
-        this.y = this.height * this.rowIndex;
-    }
     
-draw(context, img){
-    context.drawImage(
-        img, 
-        this.colIndex * img.width/size.columns,
-        this.rowIndex * img.height/size.rows,
-        img.width/size.columns,
-        img.height/size.rows,
-        this.x,
-        this.y,
-        this.width,
-        this.height);
 
-        context.beginPath();
-        context.rect (this.x, this.y, this.width, this.height);
-        context.stroke();
+    // for (let r=0; r<rows; r++){
+    //     for (let c=0; c<columns; c++){
+    //         let tile = document.createElement("img");
+    //         tile.src = "/ass3/images/puzzle/puzzle1.PNG"
+
+    //         document.getElementById("puzzle").append(tile)
+    //     }
+    // }
+
+    let pieces = [];
+    for (let i=1; i< rows*columns +1 ; i++){
+        pieces.push(i.toString());
+    }
+
+    for (let i =0; i<pieces.length; i++){
+        let tile = document.createElement("img");
+        tile.src = "/ass3/images/puzzle/" + pieces[i] + ".jpg";
+        document.getElementById("puzzle").append(tile);
     }
 }
