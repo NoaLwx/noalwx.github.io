@@ -38,8 +38,6 @@ window.onload = function(){
             tile.src = "/ass3/images/puzzle/puzzle1.PNG"
             document.getElementById("puzzle").append(tile)
         }
-
-        
     }
 
    
