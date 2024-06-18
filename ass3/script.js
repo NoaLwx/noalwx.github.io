@@ -103,20 +103,7 @@ function dragLeave(event){
 }
 
 function dragDrop(event){
-    event.preventDefault();
-//     const puzzleContainer = document.getElementById('puzzle');
-//     const pieceDropped = event.target;
-//     const correspondingPuzzleTileId = pieceDropped.id.replace('piece-', 'tile-'); // Find the corresponding puzzle tile ID based on the piece ID
-
-//     // Remove the corresponding puzzle tile
-//     const correspondingPuzzleTile = document.getElementById(correspondingPuzzleTileId);
-//     if (correspondingPuzzleTile) {
-//         puzzleContainer.removeChild(correspondingPuzzleTile);
-//     }
-
-//     // Add the dropped piece to the puzzle container
-//     puzzleContainer.appendChild(pieceDropped);
-
+    // event.preventDefault();
 otherTile = this;
 }
 
@@ -127,3 +114,91 @@ function dragEnd(event) {
     currTile.src = otherImg;
     otherTile.src = currImg;
 }
+
+//--------------------------------------------------
+//mute and unmute background audio
+
+const audio = document.querySelector("#audio")
+const muteUnmuteButton = document.querySelector("#mute-Btn");
+muteUnmuteButton.addEventListener("click",toggleSound);
+
+const muteUnmuteImg = document.querySelector("#mute-img");
+
+// if the video is muted, unmute it
+function toggleSound(){
+    if (audio.muted){
+      muteUnmuteImg.src = "/ass2/img/unmute.png"
+        audio.muted = false;
+    }
+
+    // if the video is unmuted, muted it and change the colour to red to indicate the change
+    else{
+    muteUnmuteImg.src = "/ass2/img/muted.png"
+        audio.muted = true;
+    }
+}
+
+//------------------------------------------------------
+//textbox scrip from https://codepen.io/jaflo/pen/DgWWYw
+
+
+var texts = [
+    ["Days of finding them really exhauted me. Mind lending me a hand? \n(click on the box to continue)"],
+    ["You see the puzzle pieces on the right? Drag them in the box in the middle to complete the investigation."],
+    ["That 'HINT' button up there, that is for when you want to seek for help. Don't use it too much, it stains your skill."],
+    ["See the volumn button? If you prefer working in silence, go ahead and turn the music off."],
+    ["And when you are fed up with all of this, resign and leave. But it's not guaranteed that you will keep the process."],
+    ["Go find them now, they don't like to wait."]
+];
+var i = 0, speed = 60, pressed = false, keydowned = false, running = false;
+
+type(texts[i] + "");
+
+// document.querySelector("#restart").addEventListener("click", function() {
+//     i = 0;
+//     speed = 60;
+//     pressed = false;
+//     keydowned = false;
+//     type(texts[i] + "");
+//     document.querySelector(".textbox").classList.remove("hide");
+// });
+
+
+
+document.querySelector(".textbox").addEventListener("click", function(e) {
+    document.querySelector("#detective").classList.toggle("bounce");
+
+    if (i < texts.length) {
+        type(texts[i] + "");
+    } else {
+        document.querySelector(".textbox").classList.add("hide");
+    }
+
+});
+
+function type(txt) {
+    if (!running) {
+        running = true;
+        i++;
+        var timeOut,
+            txtLen = txt.length,
+            char = 0;
+        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+        (function typeIt() {
+            timeOut = setTimeout(function() {
+                char++;
+                var type = txt.substring(0, char);
+                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                typeIt();
+                if (char === txtLen) {
+                    clearTimeout(timeOut);
+                    running = false;
+                    if (i < texts.length) {
+                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    }
+                }
+            }, speed);
+        })();
+    }
+}
+
