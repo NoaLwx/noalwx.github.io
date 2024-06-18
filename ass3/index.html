@@ -21,42 +21,55 @@
 
 <body>
     <header>
+        <!-- a button to return to the front page of this assignment, or 'the login menu of the game' -->
         <a href="/ass3/homepage/index.html">
         <button id="home">
             RESIGN
         </button>
         </a>
         
+        <!-- a button to toggle the hint for the puzzle. I dont want this to be too easy or too hard so I gave people the choice to
+        use the hint or not using the toggle function -->
         <button id="hint"> 
             HINT
         </button>
 
+        <!-- a button to mute/unmute the music. I took the codes from A2 because they share the same purpose -->
         <button id="mute-Btn">
             <img id="mute-img" src="/ass2/img/unmute.png" width="50">
         </button>
-
     </header>
+
 <div class="element">
     
+    <!-- the hint will appear throught this -->
     <div id="puzzlehint"></div>
 
+    <!-- the main part where the puzzle pieces are able to dragged and dropped -->
     <div id="puzzle"></div>
 
+    <!-- A little jumpscare image to fit the vibe -->
     <div class="jumpscare"></div>
    
-
+    <!-- a box where I stored the pieces for the puzzle, this box is scrollable (inspired by the jigsaw puzzle game from Honkai: StarRail) 
+    I just think it looks nicer that way -->
     <div id="pieces"></div>
 
+    <!-- i have them facing each other as if they are talking together -->
+    <!-- the sprite of the character on the left -->
     <div id="avaleft">
         <img id="detective" src="/ass3/images/sprite/detective.png" >
     </div>
 
+    <!-- the sprite of the character on the right -->
     <div id="avaright">
         <img id="victim" src="/ass3/images/sprite/victim1.PNG">
     </div>
 
+    <!-- textbox for the dialogue. I think i would do more customisation on this, but I dont have time -->
     <div class="textbox"></div>
 
+    <!-- a button that redirect to the ending part -->
     <div class="ending">
     <a href="/ass3/ending/index.html">
         <button id="end"> 
@@ -67,6 +80,9 @@
 
 </div>
 
+<!-- audio for the gameplay
+I have no idea why it doesn't work on refreshing the page but it works well if you click the button to go to the previous page
+and then click the button to go to the page after (the page that you were on) -->
 <audio autoplay loop id="audio">
     <source src="/ass3/audio/Melancholic Walk.mp3" type="audio/mpeg" >
   Your browser does not support the audio element.
