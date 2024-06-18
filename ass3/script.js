@@ -5,12 +5,6 @@ var columns = 3;
 var currTile;
 var otherTile;
 
-// Mapping object to associate pieces with their corresponding tile indices
-// var pieceToTileMap = {};
-
-// Populate the mapping object before shuffling
-
-
 
 window.onload = function(){
     const hint = document.getElementById("hint")
@@ -104,7 +98,7 @@ function dragLeave(event){
 
 function dragDrop(event){
     // event.preventDefault();
-otherTile = this;
+    otherTile = this;
 }
 
 function dragEnd(event) {
@@ -113,7 +107,43 @@ function dragEnd(event) {
     let otherImg = otherTile.src;
     currTile.src = otherImg;
     otherTile.src = currImg;
+    checkGameEnded();
 }
+
+function checkGameEnded() {
+    let isComplete = true;
+
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < columns; c++) {
+            let tile = document.getElementById(`tile-${r}-${c}`);
+            let expectedSrc = `/ass3/images/puzzle/${(r * columns + c + 1)}.jpg`;
+
+            // Extract only the filename from the src attribute for comparison
+            let actualSrc = tile.src.substring(tile.src.lastIndexOf("/") + 1);
+            let correctSrc = expectedSrc.substring(expectedSrc.lastIndexOf("/") + 1);
+
+            if (actualSrc !== correctSrc) {
+                isComplete = false;
+                break;
+            }
+        }
+        if (!isComplete) break;
+    }
+
+    if (isComplete) {
+        console.log("Puzzle completed!");
+        const piecesContainer = document.querySelector("#pieces");
+        piecesContainer.classList.add("hide")
+
+        victimAppear();
+        const victimAva = document.querySelector("#avaright");
+        victimAva.classList.add("show");
+        document.querySelector(".textbox").classList.remove("hide");
+
+        triggerBlink();
+    }
+}
+
 
 //--------------------------------------------------
 //mute and unmute background audio
@@ -144,26 +174,15 @@ function toggleSound(){
 
 var texts = [
     ["Days of finding them really exhauted me. Mind lending me a hand? \n(click on the box to continue)"],
-    ["You see the puzzle pieces on the right? Drag them in the box in the middle to complete the investigation."],
-    ["That 'HINT' button up there, that is for when you want to seek for help. Don't use it too much, it stains your skill."],
-    ["See the volumn button? If you prefer working in silence, go ahead and turn the music off."],
+    ["You see the puzzle pieces on the right? Drag them in the box in the middle to complete the investigation. If you feel like something is missing, how about scrolling?"],
+    ["That 'HINT' button up there, that is for when you want to seek for help. Don't use it too much, it will taint your skill."],
+    ["See the volume button? If you prefer working in silence, go ahead and turn the music off."],
     ["And when you are fed up with all of this, resign and leave. But it's not guaranteed that you will keep the process."],
     ["Go find them now, they don't like to wait."]
 ];
-var i = 0, speed = 60, pressed = false, keydowned = false, running = false;
+var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
 type(texts[i] + "");
-
-// document.querySelector("#restart").addEventListener("click", function() {
-//     i = 0;
-//     speed = 60;
-//     pressed = false;
-//     keydowned = false;
-//     type(texts[i] + "");
-//     document.querySelector(".textbox").classList.remove("hide");
-// });
-
-
 
 document.querySelector(".textbox").addEventListener("click", function(e) {
     document.querySelector("#detective").classList.toggle("bounce");
@@ -200,5 +219,70 @@ function type(txt) {
             }, speed);
         })();
     }
+    
 }
 
+//--------------------------------------------------------------------------------------------
+
+function victimAppear(){
+
+var texts= [
+    ["De-tect-ive, than-k yoo f-or-or fi-ndin-gg my he-ad. My f-am-i-ily is g-oing to be pl-eased. Thank-you."]
+];
+var i = 0, speed = 90, pressed = false, keydowned = false, running = false;
+
+type(texts[i] + "");
+
+document.querySelector(".textbox").addEventListener("click", function(e) {
+    document.querySelector("#detective").classList.toggle("bounce");
+
+    if (i < texts.length) {
+        type(texts[i] + "");
+    } else {
+        document.querySelector(".textbox").classList.add("hide");
+        const endingBtn = document.querySelector("#end");
+        endingBtn.classList.add("show")
+    }
+
+});
+
+    
+function type(txt) {
+    if (!running) {
+        running = true;
+        i++;
+        var timeOut,
+            txtLen = txt.length,
+            char = 0;
+        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+        (function typeIt() {
+            timeOut = setTimeout(function() {
+                char++;
+                var type = txt.substring(0, char);
+                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                typeIt();
+                if (char === txtLen) {
+                    clearTimeout(timeOut);
+                    running = false;
+                    if (i < texts.length) {
+                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    }
+                }
+            }, speed);
+        })();
+    }
+}
+    type(texts[i] + "", ".textbox");
+}
+
+//----------------------------------------------------------------------
+
+function triggerBlink() {
+    const element = document.querySelector(".jumpscare");
+    element.classList.add("once");
+
+    // Remove the class after the animation ends to allow retriggering
+    element.addEventListener('animationend', () => {
+        element.classList.remove("once");
+    });
+}
