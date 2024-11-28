@@ -37,13 +37,8 @@ const names = ["Detective", "Sheriff"]
 document.querySelector(".namebox").textContent = names[0];
 
 var texts = [
-    ["Days of finding them really exhauted me. Mind lending me a hand? \n(click on the box to continue)"],
-    ["You see the puzzle pieces on the right? Drag them in the box in the middle to complete the investigation. If you feel like something is missing, how about scrolling?"],
-    ["That 'HINT' button up there, that is for when you want to seek for help. Don't use it too much, it will taint your skill."],
-    ["See the volume button? If you prefer working in silence, go ahead and turn the music off."],
-    ["And when you are fed up with all of this, resign and leave. But it's not guaranteed that you will keep the process."],
-    ["Go find them now, they don't like to wait."]
-];
+    ["Dear detective Harts, \n We need your help with a serial mutilation case, given your unique abilities. Sheriff John is waiting at the crime scene in Gateway Park and will provide you with further details."],
+    ["Mutilation? What kind of sick bastard is this?"]];
 var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
 type(texts[i] + "");
@@ -54,9 +49,11 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
     if (i < texts.length) {
         type(texts[i] + "");
     } else {
-        document.querySelector(".textbox").classList.add("hide");
-        document.querySelector(".namebox").classList.add("hide");
 
+        arriveScene();
+ 
+        // document.querySelector(".textbox").classList.add("hide");
+        document.querySelector(".namebox").classList.add("hide");
     }
 
 });
@@ -95,12 +92,14 @@ function type(txt) {
 //--------------------------------------------------------------------------------------------
 //the same thing with the text dialogue above, but I make it so this only appear when the game is completed
 
-function victimAppear(){
+function arriveScene(){
+    const sheriffAva = document.querySelector("#avaright");
+    sheriffAva.classList.add("show");
 
 var texts= [
     ["De-tect-ive, than-k yoo f-or-or fi-ndin-gg my he-ad. My f-am-i-ily is g-oing to be pl-eased. Thank-you."]
 ];
-var i = 0, speed = 90, pressed = false, keydowned = false, running = false;
+var i = 0, speed = 10, pressed = false, keydowned = false, running = false;
 
 type(texts[i] + "");
 
@@ -109,6 +108,8 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
 
     if (i < texts.length) {
         type(texts[i] + "");
+        // document.querySelector(".textbox").classList.remove("hide");
+
     } else {
         document.querySelector(".textbox").classList.add("hide");
         const endingBtn = document.querySelector("#end");
