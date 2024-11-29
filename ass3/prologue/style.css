@@ -274,6 +274,7 @@ header{
     transition: all .3s;
     display: none;   
   }
+
   
   .textbox > i {
     width: 0;
@@ -285,24 +286,35 @@ header{
     float: right;
   }
 
-.ending{
-    display: grid;
-    place-items: center;
-}
-  
-#end{
+  .proceed {
     display: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    z-index: 2;
     grid-row: 2/3;
     grid-column: 2/3;
-    
+    border: 2px solid white;
+    font-family: vt323;
+    font-size: 3vh;
+        /* width: 700px;
+    height: 150px; */
+    margin: auto;
+
+    margin-top: 2vh;
+    height:3vh;
+    width: 20vw;
+    color: black;
+    background: white;
+    border: 1px solid white;
+    text-align: center;
+    box-shadow: 0 1px 0 1px black,
+    inset 0 1px 0 1px black,
+    0 0 0 1px black,
+    inset 0 0 0 1px black;
+   
 }
 
-#end.show{
-    display:grid;
-    border: none;
-    font-family: pixelify sans;
-    font-size: 2rem;
-    padding: 10px;
-    margin: auto;   
+.proceed.show{
+    display: block;
 }
 
