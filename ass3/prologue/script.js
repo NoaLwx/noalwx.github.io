@@ -44,10 +44,11 @@ var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 type(texts[i] + "");
 
 document.querySelector(".textbox").addEventListener("click", function(e) {
-    document.querySelector("#detective").classList.toggle("bounce");
 
     if (i < texts.length) {
         type(texts[i] + "");
+        document.querySelector("#detective").classList.toggle("bounce");
+
     } else {
          arriveScene();
         // document.querySelector(".textbox").classList.add("hide");
@@ -106,6 +107,83 @@ type(texts[i] + "");
 document.querySelector(".namebox").classList.toggle("hide");
 
 document.querySelector(".textbox").addEventListener("click", function(e) {
+    // document.querySelector("#detective").classList.toggle("bounce");
+
+
+    if (i < texts.length) {
+        type(texts[i] + "");
+
+    } else {
+        document.querySelector(".textbox").classList.add("hide");
+        document.querySelector(".namebox").classList.add("hide");
+        document.querySelector(".choices").classList.add("show");
+
+    }});
+
+    
+function type(txt) {
+    if (!running) {
+        running = true;
+        i++;
+        var timeOut,
+            txtLen = txt.length,
+            char = 0;
+
+
+        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+        (function typeIt() {
+            timeOut = setTimeout(function() {
+                char++;
+                var type = txt.substring(0, char);
+                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                typeIt();
+                if (char === txtLen) {
+                    clearTimeout(timeOut);
+                    running = false;
+                    if (i < texts.length) {
+                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    }
+                }
+            }, speed);
+        })();
+    }
+}};
+//---------------------------------------------------------------------
+
+const goingToScene = document.querySelector("#proceed");
+goingToScene.addEventListener("click", function(e){
+    seeScene();
+});
+
+
+const goingHome = document.querySelector("#leave");
+goingHome.addEventListener("click", function(e){
+    goHome();
+});
+
+function goHome(){
+    window.location.href="/ass3/endings/ed1/index.html";
+    
+};
+//----------------------------------------------------------------------
+
+function seeScene(){
+    document.querySelector(".namebox").textContent = names[1];
+
+    const sheriffAva = document.querySelector("#avaright");
+    sheriffAva.classList.add("show");
+
+var texts= [
+    ["Ah, detective. Nice to see you."],
+    ["Well, actually, its not that nice at all…"],
+    ["That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."]];
+    var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+
+type(texts[i] + "");
+
+document.querySelector(".namebox").classList.toggle("hide");
+
+document.querySelector(".textbox").addEventListener("click", function(e) {
     document.querySelector("#detective").classList.toggle("bounce");
 
 
@@ -148,8 +226,7 @@ function type(txt) {
         })();
     }
 }};
-
-//----------------------------------------------------------------------
+//---------------------------------------------------------------------
 // creating a function to trigger the jumpscare
 
 // function triggerBlink() {
