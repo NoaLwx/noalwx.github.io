@@ -38,7 +38,9 @@ document.querySelector(".namebox").textContent = names[0];
 
 var texts = [
     ["'Dear detective Harts, \n We need your help with a serial mutilation case, given your unique abilities. Sheriff John is waiting at the crime scene in Gateway Park and will provide you with further details.'"],
-    ["Mutilation? What kind of sick bastard is this?"] ];
+    ["Mutilation? Is this the same killer who has been on the run for years?"],
+    ["If we can't catch them this time, I believe there is no other time."]
+ ];
 var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
 type(texts[i] + "");
@@ -90,8 +92,9 @@ function type(txt) {
 //--------------------------------------------------------------------------------------------
 //the same thing with the text dialogue above, but I make it so this only appear when the game is completed
 
+
 function arriveScene(){
-    document.querySelector(".namebox").textContent = names[1];
+    document.querySelector(".namebox").textContent = names[0];
 
     const sheriffAva = document.querySelector("#avaright");
     sheriffAva.classList.add("show");
@@ -99,8 +102,10 @@ function arriveScene(){
 var texts= [
     ["Ah, detective. Nice to see you."],
     ["Well, actually, its not that nice at all…"],
-    ["That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."]];
-    var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing."],
+    ["Please head this way, we need your help on this."]
+];
+var i = 0, speed = 40, running = false;
 
 type(texts[i] + "");
 
@@ -161,10 +166,77 @@ goingHome.addEventListener("click", function(e){
     goHome();
 });
 
+
+//----------------------------------------------------------------------
+
 function goHome(){
-    window.location.href="/ass3/endings/ed1/index.html";
+    // window.location.href="/ass3/endings/ed1/index.html";
+    // document.querySelector(".namebox").textContent = names[1];
+
+    const sheriffAva = document.querySelector("#avaright");
+    sheriffAva.classList.add("show");
+
+var texts= [
+    {name: "Detective", text: "Ah, detective. Nice to see you."},
+    {name: "Sheriff", text: "Well, actually, its not that nice at all…"},
+    {name: "Sheriff", text: "That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."}
+];
+    var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+
+document.querySelector(".namebox").textContent = texts[i].name; 
+
+document.querySelector(".textbox").classList.remove("hide");
+
+
+type(texts[i] + "");
+
+document.querySelector(".namebox").classList.toggle("hide");
+
+document.querySelector(".textbox").addEventListener("click", function(e) {
+    document.querySelector("#detective").classList.toggle("bounce");
+
+
+    if (i < texts.length) {
+        type(texts[i] + "");
+        // console.log(document.querySelector(".namebox"));
+
+    } else {
+        document.querySelector(".textbox").classList.add("hide");
+        document.querySelector(".namebox").classList.add("hide");
+        console.log(document.querySelector(".namebox"));
+        document.querySelector(".proceed").classList.toggle("show");
+    }});
+
     
-};
+function type(txt) {
+    if (!running) {
+        running = true;
+        i++;
+        var timeOut,
+            txtLen = txt.length,
+            char = 0;
+
+
+        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+        (function typeIt() {
+            timeOut = setTimeout(function() {
+                char++;
+                var type = txt.substring(0, char);
+                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                typeIt();
+                if (char === txtLen) {
+                    clearTimeout(timeOut);
+                    running = false;
+                    if (i < texts.length) {
+                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    }
+                }
+            }, speed);
+        })();
+    }
+}};
+
+
 //----------------------------------------------------------------------
 
 function seeScene(){
