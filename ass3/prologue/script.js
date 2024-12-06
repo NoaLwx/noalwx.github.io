@@ -94,7 +94,7 @@ function type(txt) {
 
 
 function arriveScene(){
-    document.querySelector(".namebox").textContent = names[0];
+    document.querySelector(".namebox").textContent = names[1];
 
     const sheriffAva = document.querySelector("#avaright");
     sheriffAva.classList.add("show");
@@ -102,8 +102,7 @@ function arriveScene(){
 var texts= [
     ["Ah, detective. Nice to see you."],
     ["Well, actually, its not that nice at all…"],
-    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing."],
-    ["Please head this way, we need your help on this."]
+    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing. Please head this way, we need your help on this."]
 ];
 var i = 0, speed = 40, running = false;
 
