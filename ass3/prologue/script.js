@@ -50,6 +50,7 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
     if (i < texts.length) {
         type(texts[i] + "");
         document.querySelector("#detective").classList.toggle("bounce");
+        console.log(texts[i]);
 
     } else {
          arriveScene();
@@ -79,9 +80,6 @@ function type(txt) {
                 if (char === txtLen) {
                     clearTimeout(timeOut);
                     running = false;
-                    if (i < texts.length) {
-                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                    }
                 }
             }, speed);
         })();
@@ -104,7 +102,7 @@ var texts= [
     ["Well, actually, its not that nice at all…"],
     ["The victim we found missing her head. No other damage is being done to the body other than her head is missing. Please head this way, we need your help on this."]
 ];
-var i = 0, speed = 40, running = false;
+var i = 0, speed = 40,pressed = false, keydowned = false, running = false;
 
 type(texts[i] + "");
 
@@ -116,6 +114,8 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
 
     if (i < texts.length) {
         type(texts[i] + "");
+        console.log(texts[i]);
+
 
     } else {
         document.querySelector(".textbox").classList.add("hide");
@@ -144,159 +144,150 @@ function type(txt) {
                 if (char === txtLen) {
                     clearTimeout(timeOut);
                     running = false;
-                    if (i < texts.length) {
-                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                    }
+                    // if (i < texts.length) {
+                    //     document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    // }
                 }
             }, speed);
         })();
     }
 }};
 //---------------------------------------------------------------------
-
-const goingToScene = document.querySelector("#proceed");
-goingToScene.addEventListener("click", function(e){
-    seeScene();
-});
-
+// const goingToScene = document.querySelector("#proceed");
+// goingToScene.addEventListener("click", function(e){
+//     seeScene();
+// });
 
 const goingHome = document.querySelector("#leave");
 goingHome.addEventListener("click", function(e){
     goHome();
 });
 
-
 //----------------------------------------------------------------------
 
 function goHome(){
-    // window.location.href="/ass3/endings/ed1/index.html";
-    // document.querySelector(".namebox").textContent = names[1];
+    document.querySelector(".choices").classList.remove("show");
 
-    const sheriffAva = document.querySelector("#avaright");
-    sheriffAva.classList.add("show");
+    var texts1= [
+        ["Wait what? Are you serious?"]
+      
+    ];
+        var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+        
+    const textbox = document.querySelector(".textbox");
+    textbox.classList.remove("hide");
 
-var texts= [
-    {name: "Detective", text: "Ah, detective. Nice to see you."},
-    {name: "Sheriff", text: "Well, actually, its not that nice at all…"},
-    {name: "Sheriff", text: "That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."}
-];
-    var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
-
-document.querySelector(".namebox").textContent = texts[i].name; 
-
-document.querySelector(".textbox").classList.remove("hide");
+    const namebox = document.querySelector(".namebox");
+    namebox.classList.remove("hide");
 
 
-type(texts[i] + "");
-
-document.querySelector(".namebox").classList.toggle("hide");
-
-document.querySelector(".textbox").addEventListener("click", function(e) {
-    document.querySelector("#detective").classList.toggle("bounce");
-
-
-    if (i < texts.length) {
-        type(texts[i] + "");
-        // console.log(document.querySelector(".namebox"));
-
-    } else {
-        document.querySelector(".textbox").classList.add("hide");
-        document.querySelector(".namebox").classList.add("hide");
-        console.log(document.querySelector(".namebox"));
-        document.querySelector(".proceed").classList.toggle("show");
-    }});
+    namebox.textContent = names[1]; 
+    type(texts1[i] + "");
+    
+    
+    textbox.addEventListener("click", function (e) {
+    
+    
+        if (i < texts1.length) {
+            console.log(texts1[i]);
 
     
-function type(txt) {
-    if (!running) {
-        running = true;
-        i++;
-        var timeOut,
-            txtLen = txt.length,
-            char = 0;
-
-
-        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
-        (function typeIt() {
-            timeOut = setTimeout(function() {
-                char++;
-                var type = txt.substring(0, char);
-                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
-                typeIt();
-                if (char === txtLen) {
-                    clearTimeout(timeOut);
-                    running = false;
-                    if (i < texts.length) {
-                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+            // document.querySelector(".namebox").textContent = texts[2].name; // Update name
+            type(texts1[i] + ""); 
+        } else {
+            window.location.href = "/ass3/endings/ed1/index.html";
+        }
+    });
+        
+    function type(txt) {
+        if (!running) {
+            running = true;
+            var timeOut,
+                txtLen = txt.length,
+                char = 0;
+    
+    
+            document.querySelector(".textbox").textContent = ""; 
+            (function typeIt() {
+                timeOut = setTimeout(function() {
+                    char++;
+                    var type = txt.substring(0, char);
+                    document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                    typeIt();
+                    if (char === txtLen) {
+                        clearTimeout(timeOut);
+                        running = false;
+                        if (i < texts1.length) {
+                            document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                        }
                     }
-                }
-            }, speed);
-        })();
-    }
-}};
+                }, speed);
+            })();
+        }
+    }};
 
 
 //----------------------------------------------------------------------
 
-function seeScene(){
-    document.querySelector(".namebox").textContent = names[1];
+// function seeScene(){
+//     document.querySelector(".namebox").textContent = names[1];
 
-    const sheriffAva = document.querySelector("#avaright");
-    sheriffAva.classList.add("show");
+//     const sheriffAva = document.querySelector("#avaright");
+//     sheriffAva.classList.add("show");
 
-var texts= [
-    ["Ah, detective. Nice to see you."],
-    ["Well, actually, its not that nice at all…"],
-    ["That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."]];
-    var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+// var texts= [
+//     ["Ah, detective. Nice to see you."],
+//     ["Well, actually, its not that nice at all…"],
+//     ["That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."]];
+//     var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
-type(texts[i] + "");
+// type(texts[i] + "");
 
-document.querySelector(".namebox").classList.toggle("hide");
+// document.querySelector(".namebox").classList.toggle("hide");
 
-document.querySelector(".textbox").addEventListener("click", function(e) {
-    document.querySelector("#detective").classList.toggle("bounce");
+// document.querySelector(".textbox").addEventListener("click", function(e) {
+//     document.querySelector("#detective").classList.toggle("bounce");
 
 
-    if (i < texts.length) {
-        type(texts[i] + "");
-        console.log(document.querySelector(".namebox"));
+//     if (i < texts.length) {
+//         type(texts[i] + "");
+//         console.log(document.querySelector(".namebox"));
 
-    } else {
-        document.querySelector(".textbox").classList.add("hide");
-        document.querySelector(".namebox").classList.add("hide");
-        console.log(document.querySelector(".namebox"));
-        document.querySelector(".proceed").classList.toggle("show");
-    }});
+//     } else {
+//         document.querySelector(".textbox").classList.add("hide");
+//         document.querySelector(".namebox").classList.add("hide");
+//         console.log(document.querySelector(".namebox"));
+//         document.querySelector(".proceed").classList.toggle("show");
+//     }});
 
     
-function type(txt) {
-    if (!running) {
-        running = true;
-        i++;
-        var timeOut,
-            txtLen = txt.length,
-            char = 0;
+// function type(txt) {
+//     if (!running) {
+//         running = true;
+//         i++;
+//         var timeOut,
+//             txtLen = txt.length,
+//             char = 0;
 
 
-        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
-        (function typeIt() {
-            timeOut = setTimeout(function() {
-                char++;
-                var type = txt.substring(0, char);
-                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
-                typeIt();
-                if (char === txtLen) {
-                    clearTimeout(timeOut);
-                    running = false;
-                    if (i < texts.length) {
-                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                    }
-                }
-            }, speed);
-        })();
-    }
-}};
+//         document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+//         (function typeIt() {
+//             timeOut = setTimeout(function() {
+//                 char++;
+//                 var type = txt.substring(0, char);
+//                 document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+//                 typeIt();
+//                 if (char === txtLen) {
+//                     clearTimeout(timeOut);
+//                     running = false;
+//                     if (i < texts.length) {
+//                         document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+//                     }
+//                 }
+//             }, speed);
+//         })();
+//     }
+// }};
 //---------------------------------------------------------------------
 // creating a function to trigger the jumpscare
 

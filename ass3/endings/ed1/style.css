@@ -45,7 +45,9 @@ header{
     /* margin-left:22% */
     margin: auto;
     margin-top: 2%;
-    padding: 15%;;
+    padding: 15%;
+    background-image: url(/ass3/images/cutscenes/ed11.PNG);
+    background-size: cover ;
 }
  
 /* --------------------------------------------------------- */
