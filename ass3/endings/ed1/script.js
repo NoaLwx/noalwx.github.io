@@ -1,9 +1,9 @@
 
 
 var texts = [
-    ["You left. Without looking back. You realise whatever happen is not your problem to deal with."],
-    // ["You are scared of facing the danger. You are scared of facing the truth."],
-    // ["Is this really your choice? Is this what you are happy with?"]
+    ["You left. Without looking back. You realise whatever happen is not your problem to deal with. \n You are tired of chasing after something you can't deal with."],
+    ["You are scared of facing the danger. You are scared of facing the truth. You are scared of your own ability, and inability."],
+    ["Is this really your choice? Is this what you are happy with? People will die because you quit. But who are they to judge you. \n You incompetent fuck."]
  ];
 var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
@@ -52,7 +52,7 @@ function type(txt) {
 function next(){
 
 const cutscene = document.querySelector(".cutscene");
-cutscene.style.backgroundImage = "url(/ass3/images/cutscenes/ed12.png;)";
+cutscene.style.backgroundImage = "url(/ass3/images/cutscenes/ed12.PNG)";
 
 
 var texts = [

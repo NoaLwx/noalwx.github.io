@@ -41,7 +41,7 @@ header{
     grid-column: 1/4;
     border: 2px solid white;
     width: 100vh;
-    height: 25vh;
+    height: 15vh;
     /* margin-left:22% */
     margin: auto;
     margin-top: 2%;
@@ -105,39 +105,8 @@ header{
 
 /* --------------------------------------------------------- */
 
-.namebox {
-    font-weight: bold;
-    font-size: 1.2em;
-    z-index: 3;
-    grid-row: 2/3;
-    grid-column: 2/3;
-    border: 2px solid white;
-    font-family: vt323;
-    font-size: 3vh;
-        /* width: 700px;
-    height: 150px; */
-    margin: auto;
-
-    margin-top: 2vh;
-    height:3vh;
-    width: 20vw;
-    background: white;
-    border: 1px solid white;
-    text-align: center;
-    box-shadow: 0 1px 0 1px black,
-    inset 0 1px 0 1px black,
-    0 0 0 1px black,
-    inset 0 0 0 1px black;
-   
-}
-
-.namebox.hide {
-    transition: all .3s;
-    display: none;   
-  }
-  
 .textbox{
-    z-index: 2;
+    z-index: 3;
     grid-row: 2/3;
     grid-column: 1/4;
     /* width: 200px; */
