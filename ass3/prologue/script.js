@@ -85,6 +85,22 @@ function type(txt) {
 
 //--------------------------------------------------------------------------------------------
 
+function typeText(element, text, speed, callback) {
+    let char = 0;
+    element.textContent = ""; // Clear existing text
+
+    function type() {
+        if (char < text.length) {
+            element.innerHTML += text[char] === "\n" ? "<br />" : text[char];
+            char++;
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    type();
+}
+
 function arriveScene(){
     const namebox = document.querySelector(".namebox");
     const textbox = document.querySelector(".textbox");
@@ -99,7 +115,7 @@ function arriveScene(){
 var texts= [
     ["Ah, detective. Nice to see you."],
     ["Well, actually, its not that nice at all…"],
-    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing. Please head this way, we need your help on this."]
+    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing.\n Please head this way, we need your help on this."],
 ];
 var i = 0, speed = 40, running = false;
 
@@ -113,6 +129,7 @@ document.querySelector(".textbox").addEventListener("click", handleClick);
     function handleClick () {
 
     if (i < texts.length) {
+        textbox.textContent = ""; 
         type(texts[i] + "");
 
     } else {
@@ -132,19 +149,16 @@ function type(txt) {
         var timeOut,
             txtLen = txt.length,
             char = 0;
-        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
+        textbox.textContent = ""; 
         (function typeIt() {
             timeOut = setTimeout(function() {
                 char++;
                 var type = txt.substring(0, char);
-                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
+                textbox.innerHTML = type.replace("\n", "<br />");
                 typeIt();
                 if (char === txtLen) {
                     clearTimeout(timeOut);
                     running = false;
-                    if (i < texts.length) {
-                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                    }
                 }
             }, speed);
         })();
@@ -178,21 +192,21 @@ function goHome() {
         ["Wait what? Are you serious?"]
     ];
 
-    let i = 0;
-    let speed = 30;
+    let ii = 0;
+    let speed = 10;
     let running = false;
 
     namebox.textContent = names[1]; // Set the name
-    type1(texts1[i] + "");       // Start typing
+    type1(texts1[ii] + "");       // Start typing
 
 
     textbox1.removeEventListener("click", handleClick1);
     textbox1.addEventListener("click", handleClick1);
 
     function handleClick1() {
-        if (i < texts1.length - 1) {
-            i++; 
-            type1(texts1[i] + ""); 
+        if (ii < texts1.length) {
+            textbox1.textContent = ""; 
+            type1(texts1[ii] + ""); 
         } else {
             window.location.href = "/ass3/endings/ed1/index.html";
             textbox1.removeEventListener("click", handleClick1);
@@ -201,19 +215,21 @@ function goHome() {
     }
 
 
-    function type1(txt) {
+    function type1(txt1) {
         if (!running) {
-            running = true;
-            let char = 0;
+            ii++; 
+            var timeOut1,
+                txtLen1 = txt1.length,
+                char1 = 0;;
             textbox1.textContent = ""; 
-            (function typeIt() {
+            (function typeIt1() {
                 setTimeout(() => {
-                    char++;
-                    const type = txt.substring(0, char);
-                    textbox1.innerHTML = type.replace("\n", "<br />");
-                    if (char < txt.length) {
-                        typeIt();
-                    } else {
+                    char1++;
+                    const type1 = txt1.substring(0, char1);
+                    textbox1.innerHTML = type1.replace("\n", "<br />");
+                    typeIt1();
+                    if (char1 === txtLen1) {
+                        clearTimeout(timeOut1);
                         running = false;
                     }
                 }, speed);
