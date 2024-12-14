@@ -69,7 +69,7 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
         console.log(texts[i]);
 
     } else {
-        
+        document.querySelector(".textbox").classList.add("hide")
     }});
 
 

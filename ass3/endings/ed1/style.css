@@ -41,7 +41,7 @@ header{
     grid-column: 1/4;
     border: 2px solid white;
     width: 100vh;
-    height: 15vh;
+    height: 10vh;
     /* margin-left:22% */
     margin: auto;
     margin-top: 2%;
@@ -50,58 +50,7 @@ header{
     background-size: cover ;
 }
  
-/* --------------------------------------------------------- */
-/* Detective side */
 
-#avaleft{
-    grid-column: 1/2;
-    grid-row: 1/3;
-    /* background-color: aqua; */
-    align-content: end;
-}
-
-#avaleft img{
-    height: 70%;
-    /* height: 700px; */
-
-}
-
-@keyframes bounceUp {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-#detective.bounce {
-    animation-name: bounceUp;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-}
-
-
-/* --------------------------------------------------------- */
-
-#avaright{
-    display: none;
-    grid-row: 1/3;
-    grid-column: 3/4;
-    align-content: end;
-    padding-left: 20%;
-}
-#avaright.show{
-    display: block;
-}
-
-#avaright img{
-    height: 70%;
-    /* height: 700px; */
-}
 
 /* --------------------------------------------------------- */
 

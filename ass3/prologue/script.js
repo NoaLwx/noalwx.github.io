@@ -38,8 +38,8 @@ document.querySelector(".namebox").textContent = names[0];
 
 var texts = [
     ["'Dear detective Harts, \n We need your help with a serial mutilation case, given your unique abilities. Sheriff John is waiting at the crime scene in Gateway Park and will provide you with further details.'"],
-    ["Mutilation? Is this the same killer who has been on the run for years?"],
-    ["If we can't catch them this time, I believe there is no other time."]
+    // ["Mutilation? Is this the same killer who has been on the run for years?"],
+    // ["If we can't catch them this time, I believe there is no other time."]
  ];
 var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
 
@@ -54,12 +54,8 @@ document.querySelector(".textbox").addEventListener("click", function(e) {
 
     } else {
          arriveScene();
-        // document.querySelector(".textbox").classList.add("hide");
         document.querySelector(".namebox").classList.toggle("hide");
-        // console.log(document.querySelector(".namebox"));
     }});
-
-
 
 function type(txt) {
     if (!running) {
@@ -88,41 +84,45 @@ function type(txt) {
 };
 
 //--------------------------------------------------------------------------------------------
-//the same thing with the text dialogue above, but I make it so this only appear when the game is completed
-
 
 function arriveScene(){
-    document.querySelector(".namebox").textContent = names[1];
+    const namebox = document.querySelector(".namebox");
+    const textbox = document.querySelector(".textbox");
+    namebox.textContent = names[1];
+
+    namebox.classList.toggle("hide");
 
     const sheriffAva = document.querySelector("#avaright");
     sheriffAva.classList.add("show");
+
 
 var texts= [
     ["Ah, detective. Nice to see you."],
     ["Well, actually, its not that nice at all…"],
     ["The victim we found missing her head. No other damage is being done to the body other than her head is missing. Please head this way, we need your help on this."]
 ];
-var i = 0, speed = 40,pressed = false, keydowned = false, running = false;
+var i = 0, speed = 40, running = false;
 
 type(texts[i] + "");
 
-document.querySelector(".namebox").classList.toggle("hide");
+textbox.removeEventListener("click", handleClick);
+textbox.addEventListener("click", handleClick);
 
-document.querySelector(".textbox").addEventListener("click", function(e) {
-    // document.querySelector("#detective").classList.toggle("bounce");
-
+document.querySelector(".textbox").addEventListener("click", handleClick);
+    
+    function handleClick () {
 
     if (i < texts.length) {
         type(texts[i] + "");
-        console.log(texts[i]);
-
 
     } else {
-        document.querySelector(".textbox").classList.add("hide");
-        document.querySelector(".namebox").classList.add("hide");
+        textbox.classList.add("hide");
+        namebox.classList.add("hide");
         document.querySelector(".choices").classList.add("show");
 
-    }});
+        textbox.removeEventListener("click", handleClick);
+
+    }};
 
     
 function type(txt) {
@@ -132,8 +132,6 @@ function type(txt) {
         var timeOut,
             txtLen = txt.length,
             char = 0;
-
-
         document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
         (function typeIt() {
             timeOut = setTimeout(function() {
@@ -144,9 +142,9 @@ function type(txt) {
                 if (char === txtLen) {
                     clearTimeout(timeOut);
                     running = false;
-                    // if (i < texts.length) {
-                    //     document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                    // }
+                    if (i < texts.length) {
+                        document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
+                    }
                 }
             }, speed);
         })();
@@ -165,66 +163,64 @@ goingHome.addEventListener("click", function(e){
 
 //----------------------------------------------------------------------
 
-function goHome(){
-    document.querySelector(".choices").classList.remove("show");
 
-    var texts1= [
-        ["Wait what? Are you serious?"]
-      
-    ];
-        var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
-        
-    const textbox = document.querySelector(".textbox");
-    textbox.classList.remove("hide");
-
+function goHome() {
     const namebox = document.querySelector(".namebox");
+    const textbox1 = document.querySelector(".textbox");
+    const choices = document.querySelector(".choices");
+
+    choices.classList.remove("show");
     namebox.classList.remove("hide");
+    textbox1.classList.remove("hide");
 
 
-    namebox.textContent = names[1]; 
-    type(texts1[i] + "");
-    
-    
-    textbox.addEventListener("click", function (e) {
-    
-    
-        if (i < texts1.length) {
-            console.log(texts1[i]);
+    const texts1 = [
+        ["Wait what? Are you serious?"]
+    ];
 
-    
-            // document.querySelector(".namebox").textContent = texts[2].name; // Update name
-            type(texts1[i] + ""); 
+    let i = 0;
+    let speed = 30;
+    let running = false;
+
+    namebox.textContent = names[1]; // Set the name
+    type1(texts1[i] + "");       // Start typing
+
+
+    textbox1.removeEventListener("click", handleClick1);
+    textbox1.addEventListener("click", handleClick1);
+
+    function handleClick1() {
+        if (i < texts1.length - 1) {
+            i++; 
+            type1(texts1[i] + ""); 
         } else {
             window.location.href = "/ass3/endings/ed1/index.html";
+            textbox1.removeEventListener("click", handleClick1);
+
         }
-    });
-        
-    function type(txt) {
+    }
+
+
+    function type1(txt) {
         if (!running) {
             running = true;
-            var timeOut,
-                txtLen = txt.length,
-                char = 0;
-    
-    
-            document.querySelector(".textbox").textContent = ""; 
+            let char = 0;
+            textbox1.textContent = ""; 
             (function typeIt() {
-                timeOut = setTimeout(function() {
+                setTimeout(() => {
                     char++;
-                    var type = txt.substring(0, char);
-                    document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
-                    typeIt();
-                    if (char === txtLen) {
-                        clearTimeout(timeOut);
+                    const type = txt.substring(0, char);
+                    textbox1.innerHTML = type.replace("\n", "<br />");
+                    if (char < txt.length) {
+                        typeIt();
+                    } else {
                         running = false;
-                        if (i < texts1.length) {
-                            document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-                        }
                     }
                 }, speed);
             })();
         }
-    }};
+    }
+}
 
 
 //----------------------------------------------------------------------

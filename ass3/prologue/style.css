@@ -144,7 +144,7 @@ header{
     height: 150px; */
     margin: auto;
 
-    margin-top: 2vh;
+    margin-top: 1vh;
     height:3vh;
     width: 20vw;
     background: white;
@@ -172,6 +172,7 @@ header{
     font-size: 3vh;
     margin: auto;
     padding: 20px;
+    padding-top: 2%;
     /* width: 700px;
     height: 150px; */
     width: 70vh;
@@ -235,3 +236,16 @@ header{
     display: block;
 }
 
+.cutscene{
+    grid-row: 1/2;
+    grid-column: 1/4;
+    border: 2px solid white;
+    width: 100vh;
+    height: 10vh;
+    /* margin-left:22% */
+    margin: auto;
+    padding: 15%;
+    background-image: url(/ass3/images/cutscenes/ed11.PNG);
+    background-size: cover ;
+}
+ 
