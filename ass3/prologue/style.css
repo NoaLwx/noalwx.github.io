@@ -202,6 +202,37 @@ header{
     float: right;
   }
 
+    
+.textbox1{
+    display: none;
+    z-index: 2;
+    grid-row: 2/3;
+    grid-column: 1/4;
+    /* width: 200px; */
+    border: 2px solid white;
+    font-family: vt323;
+    font-size: 3vh;
+    margin: auto;
+    padding: 20px;
+    padding-top: 2%;
+    /* width: 700px;
+    height: 150px; */
+    width: 70vh;
+    height: 15vh;
+    background: white;
+    border: 1px solid white;
+    box-shadow: 0 1px 0 1px black,
+                inset 0 1px 0 1px black,
+                0 0 0 1px black,
+                inset 0 0 0 1px black;
+  }
+
+
+  .textbox1.show {
+    transition: all .3s;
+    display: block;   
+  }
+
 .choices{
     display: none;
     grid-row: 2/3;

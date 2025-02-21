@@ -28,83 +28,77 @@ function toggleSound(){
 
 //------------------------------------------------------
 
-const names = ["Detective", "Sheriff"]
+const names = ["Detective", "Sheriff"];
 
 
 //------------------------------------------------------
 //textbox scrip from https://codepen.io/jaflo/pen/DgWWYw
 
-document.querySelector(".namebox").textContent = names[0];
+// document.querySelector(".namebox").textContent = names[0];
+const namebox = document.querySelector(".namebox");
+
 
 var texts = [
-    ["'Dear detective Harts, \n We need your help with a serial mutilation case, given your unique abilities. Sheriff John is waiting at the crime scene in Gateway Park and will provide you with further details.'"],
-    // ["Mutilation? Is this the same killer who has been on the run for years?"],
-    // ["If we can't catch them this time, I believe there is no other time."]
- ];
-var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
+    {name: "Detective", text: "'Dear Detective Harts, \nWe need your help with a serial mutilation case, given your unique abilities. Sheriff John is waiting at the crime scene in Gateway Park and will provide you with further details.'"},
+    {name: "Detective", text:"Mutilation? Is this the same killer who has been on the run for years?"},
+    {name: "Detective", text:"If we can't catch them this time, I believe there is no other time."},
+];
+var i = 0, speed = 30, running = false, currentText = "", char = 0;
 
-type(texts[i] + "");
+type(texts[i]);
 
-document.querySelector(".textbox").addEventListener("click", function(e) {
+document.querySelector(".textbox").addEventListener("click", function () {
+    const textbox = document.querySelector(".textbox");
 
-    if (i < texts.length) {
-        type(texts[i] + "");
-        document.querySelector("#detective").classList.toggle("bounce");
-        console.log(texts[i]);
-
+    if (running) {
+        // If typing is running, complete the current text immediately
+        textbox.innerHTML = currentText.replace(/\n/g, "<br />");
+        char = currentText.length;
+        running = false; // Mark as complete
     } else {
-         arriveScene();
-        document.querySelector(".namebox").classList.toggle("hide");
-    }});
+        // If not running, move to the next line
+        if (i < texts.length) {
+            type(texts[i]);
+            document.querySelector("#detective").classList.toggle("bounce");
+            console.log(texts[i]);
+        } else {
+            arriveScene();
+            document.querySelector(".namebox").classList.toggle("hide");
 
-function type(txt) {
-    if (!running) {
-        running = true;
-        i++;
-        var timeOut,
-            txtLen = txt.length,
-            char = 0;
-
-
-        document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
-        (function typeIt() {
-            timeOut = setTimeout(function() {
-                char++;
-                var type = txt.substring(0, char);
-                document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
-                typeIt();
-                if (char === txtLen) {
-                    clearTimeout(timeOut);
-                    running = false;
-                }
-            }, speed);
-        })();
+        }
     }
-    
+});
+
+function type(line) {
+    currentText = line.text; // Store the current text being typed
+    char = 0;
+    running = true;
+
+    namebox.textContent = line.name;
+
+    const textbox = document.querySelector(".textbox");
+    textbox.textContent = ""; // Clear the textbox
+
+    (function typeIt() {
+        if (char < currentText.length) {
+            textbox.innerHTML = currentText.substring(0, char + 1).replace(/\n/g, "<br />");
+            char++;
+            setTimeout(typeIt, speed);
+        } else {
+            running = false; 
+            i++; 
+        }
+    })();
 };
+
 
 //--------------------------------------------------------------------------------------------
 
-function typeText(element, text, speed, callback) {
-    let char = 0;
-    element.textContent = ""; // Clear existing text
-
-    function type() {
-        if (char < text.length) {
-            element.innerHTML += text[char] === "\n" ? "<br />" : text[char];
-            char++;
-            setTimeout(type, speed);
-        } else if (callback) {
-            callback();
-        }
-    }
-    type();
-}
 
 function arriveScene(){
     const namebox = document.querySelector(".namebox");
     const textbox = document.querySelector(".textbox");
-    namebox.textContent = names[1];
+    // namebox.textContent = names[1];
 
     namebox.classList.toggle("hide");
 
@@ -113,62 +107,71 @@ function arriveScene(){
 
 
 var texts= [
-    ["Ah, detective. Nice to see you."],
-    ["Well, actually, its not that nice at all…"],
-    ["The victim we found missing her head. No other damage is being done to the body other than her head is missing.\n Please head this way, we need your help on this."],
+    {name: "Sheriff", text: "Ah, detective. Nice to see you."},
+    {name: "Detective", text: "Ok."},
+    {name: "Sheriff", text:"Well, actually, its not that nice at all…"},
+    {name: "Sheriff", text:"The victim we found missing her head. No other damage is being done to the body other than her head is missing.\n Please head this way, we need your help on this."},
 ];
-var i = 0, speed = 40, running = false;
+var i = 0, speed = 40, currentText = "", running = false;
 
-type(texts[i] + "");
+type(texts[i]);
 
-textbox.removeEventListener("click", handleClick);
-textbox.addEventListener("click", handleClick);
+document.querySelector(".textbox").addEventListener("click", function () {
+    const textbox = document.querySelector(".textbox");
 
-document.querySelector(".textbox").addEventListener("click", handleClick);
-    
-    function handleClick () {
+    if (running) {
+        textbox.innerHTML = currentText.replace(/\n/g, "<br />");
+        char = currentText.length;
+        running = false; // Mark as complete
+        i++;
 
-    if (i < texts.length) {
-        textbox.textContent = ""; 
-        type(texts[i] + "");
+        if (i < texts.length) {
+            namebox.textContent = texts[i].name; 
+        }
+
 
     } else {
-        textbox.classList.add("hide");
-        namebox.classList.add("hide");
-        document.querySelector(".choices").classList.add("show");
+        if (i < texts.length) {
+            type(texts[i]);
+            // console.log(texts[i]);
+        } else {
+            textbox.classList.add("hide");
+            namebox.classList.add("hide");
+            document.querySelector(".choices").classList.add("show");
+        
+        }
+    }
+});
 
-        textbox.removeEventListener("click", handleClick);
-
-    }};
 
     
-function type(txt) {
-    if (!running) {
+    function type(line) {
+        currentText = line.text; 
+        char = 0;
         running = true;
-        i++;
-        var timeOut,
-            txtLen = txt.length,
-            char = 0;
-        textbox.textContent = ""; 
+    
+        namebox.textContent = line.name;
+
+        const textbox = document.querySelector(".textbox");
+        textbox.textContent = ""; // Clear the textbox
+    
         (function typeIt() {
-            timeOut = setTimeout(function() {
+            if (char < currentText.length) {
+                textbox.innerHTML = currentText.substring(0, char + 1).replace(/\n/g, "<br />");
                 char++;
-                var type = txt.substring(0, char);
-                textbox.innerHTML = type.replace("\n", "<br />");
-                typeIt();
-                if (char === txtLen) {
-                    clearTimeout(timeOut);
-                    running = false;
-                }
-            }, speed);
+                setTimeout(typeIt, speed);
+            } else {
+                running = false; 
+                i++; 
+            }
         })();
-    }
-}};
+    };
+}
 //---------------------------------------------------------------------
-// const goingToScene = document.querySelector("#proceed");
-// goingToScene.addEventListener("click", function(e){
-//     seeScene();
-// });
+const goingToScene = document.querySelector("#proceed");
+goingToScene.addEventListener("click", function(e){
+    seeScene();
+});
 
 const goingHome = document.querySelector("#leave");
 goingHome.addEventListener("click", function(e){
@@ -180,126 +183,140 @@ goingHome.addEventListener("click", function(e){
 
 function goHome() {
     const namebox = document.querySelector(".namebox");
-    const textbox1 = document.querySelector(".textbox");
+    const textbox1 = document.querySelector(".textbox1");
     const choices = document.querySelector(".choices");
 
     choices.classList.remove("show");
     namebox.classList.remove("hide");
-    textbox1.classList.remove("hide");
+    textbox1.classList.add("show");
 
 
-    const texts1 = [
-        ["Wait what? Are you serious?"]
+    var texts = [
+        "Wait what? Are you serious?",
     ];
 
-    let ii = 0;
+    let i = 0;
     let speed = 10;
     let running = false;
 
     namebox.textContent = names[1]; // Set the name
-    type1(texts1[ii] + "");       // Start typing
+    type(texts[i] + "");       // Start typing
 
 
-    textbox1.removeEventListener("click", handleClick1);
-    textbox1.addEventListener("click", handleClick1);
-
-    function handleClick1() {
-        if (ii < texts1.length) {
-            textbox1.textContent = ""; 
-            type1(texts1[ii] + ""); 
+    document.querySelector(".textbox1").addEventListener("click", function () {
+        const textbox1 = document.querySelector(".textbox1");
+    
+        if (running) {
+            // If typing is running, complete the current text immediately
+            textbox1.innerHTML = currentText.replace(/\n/g, "<br />");
+            char = currentText.length;
+            running = false; // Mark as complete
         } else {
-            window.location.href = "/ass3/endings/ed1/index.html";
-            textbox1.removeEventListener("click", handleClick1);
-
+            // If not running, move to the next line
+            if (i < texts.length) {
+                type(texts[i]);
+                // document.querySelector("#detective").classList.toggle("bounce");
+                console.log(texts[i]);
+            } else {
+                window.location.href = "/ass3/endings/ed1/index.html";
+                textbox1.removeEventListener("click", handleClick1);
+            }
         }
-    }
-
-
-    function type1(txt1) {
-        if (!running) {
-            ii++; 
-            var timeOut1,
-                txtLen1 = txt1.length,
-                char1 = 0;;
-            textbox1.textContent = ""; 
-            (function typeIt1() {
-                setTimeout(() => {
-                    char1++;
-                    const type1 = txt1.substring(0, char1);
-                    textbox1.innerHTML = type1.replace("\n", "<br />");
-                    typeIt1();
-                    if (char1 === txtLen1) {
-                        clearTimeout(timeOut1);
-                        running = false;
-                    }
-                }, speed);
+    });
+    
+    
+        
+        function type(txt) {
+            currentText = txt; // Store the current text being typed
+            char = 0;
+            running = true;
+        
+            const textbox1 = document.querySelector(".textbox1");
+            textbox1.textContent = ""; // Clear the textbox
+        
+            (function typeIt() {
+                if (char < txt.length) {
+                    textbox1.innerHTML = txt.substring(0, char + 1).replace(/\n/g, "<br />");
+                    char++;
+                    setTimeout(typeIt, speed);
+                } else {
+                    running = false; // Mark typing as complete
+                    i++; // Move to the next text index
+                }
             })();
-        }
+        };
     }
-}
+  
 
 
 //----------------------------------------------------------------------
 
-// function seeScene(){
-//     document.querySelector(".namebox").textContent = names[1];
+function seeScene() {
+    const namebox = document.querySelector(".namebox");
+    const textbox1 = document.querySelector(".textbox1");
+    const choices = document.querySelector(".choices");
 
-//     const sheriffAva = document.querySelector("#avaright");
-//     sheriffAva.classList.add("show");
-
-// var texts= [
-//     ["Ah, detective. Nice to see you."],
-//     ["Well, actually, its not that nice at all…"],
-//     ["That aside, the victim we found missing her head. No other damage is being done to the body other than her head is missing."]];
-//     var i = 0, speed = 30, pressed = false, keydowned = false, running = false;
-
-// type(texts[i] + "");
-
-// document.querySelector(".namebox").classList.toggle("hide");
-
-// document.querySelector(".textbox").addEventListener("click", function(e) {
-//     document.querySelector("#detective").classList.toggle("bounce");
+    choices.classList.remove("show");
+    namebox.classList.remove("hide");
+    textbox1.classList.add("show");
 
 
-//     if (i < texts.length) {
-//         type(texts[i] + "");
-//         console.log(document.querySelector(".namebox"));
+    var texts = [
+        "follow me?",
+    ];
 
-//     } else {
-//         document.querySelector(".textbox").classList.add("hide");
-//         document.querySelector(".namebox").classList.add("hide");
-//         console.log(document.querySelector(".namebox"));
-//         document.querySelector(".proceed").classList.toggle("show");
-//     }});
+    let i = 0;
+    let speed = 10;
+    let running = false;
 
+    namebox.textContent = names[1]; // Set the name
+    type(texts[i] + "");       // Start typing
+
+
+    document.querySelector(".textbox1").addEventListener("click", function () {
+        const textbox1 = document.querySelector(".textbox1");
     
-// function type(txt) {
-//     if (!running) {
-//         running = true;
-//         i++;
-//         var timeOut,
-//             txtLen = txt.length,
-//             char = 0;
+        if (running) {
+            // If typing is running, complete the current text immediately
+            textbox1.innerHTML = currentText.replace(/\n/g, "<br />");
+            char = currentText.length;
+            running = false; // Mark as complete
+        } else {
+            // If not running, move to the next line
+            if (i < texts.length) {
+                type(texts[i]);
+                // document.querySelector("#detective").classList.toggle("bounce");
+                console.log(texts[i]);
+            } else {
+                window.location.href = "/ass3/day1/index.html";
+                textbox1.removeEventListener("click", handleClick1);
+            }
+        }
+    });
+    
+    
+        
+        function type(txt) {
+            currentText = txt; // Store the current text being typed
+            char = 0;
+            running = true;
+        
+            const textbox1 = document.querySelector(".textbox1");
+            textbox1.textContent = ""; // Clear the textbox
+        
+            (function typeIt() {
+                if (char < txt.length) {
+                    textbox1.innerHTML = txt.substring(0, char + 1).replace(/\n/g, "<br />");
+                    char++;
+                    setTimeout(typeIt, speed);
+                } else {
+                    running = false; // Mark typing as complete
+                    i++; // Move to the next text index
+                }
+            })();
+        };
+    }
 
-
-//         document.querySelector(".textbox").textContent = ""; // Use textContent for plain text
-//         (function typeIt() {
-//             timeOut = setTimeout(function() {
-//                 char++;
-//                 var type = txt.substring(0, char);
-//                 document.querySelector(".textbox").innerHTML = type.replace("\n", "<br />");
-//                 typeIt();
-//                 if (char === txtLen) {
-//                     clearTimeout(timeOut);
-//                     running = false;
-//                     if (i < texts.length) {
-//                         document.querySelector(".textbox").insertAdjacentHTML('beforebegin', '<i></i>'); // Insert before the.box element
-//                     }
-//                 }
-//             }, speed);
-//         })();
-//     }
-// }};
 //---------------------------------------------------------------------
 // creating a function to trigger the jumpscare
 
